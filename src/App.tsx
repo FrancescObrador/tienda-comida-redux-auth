@@ -13,8 +13,8 @@ function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
+        <div className="container">
         <Navbar />
-        <div className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
