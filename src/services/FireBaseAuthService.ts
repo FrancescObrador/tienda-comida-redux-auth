@@ -10,6 +10,7 @@ const auth = getAuth(app)
 
 export class FirebaseAuthService implements IAuthService {
     private databaseService: FirebaseDatabaseService;
+    
     constructor() {
         this.databaseService = new FirebaseDatabaseService();
     }

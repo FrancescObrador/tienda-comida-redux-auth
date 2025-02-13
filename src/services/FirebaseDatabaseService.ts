@@ -29,15 +29,28 @@ export class FirebaseDatabaseService implements IUserDatabaseService {
     async setUserRoles(uid: string, user: User): Promise<Role[]> {
         const db = getDatabase(app);
         const rolesRef = ref(db, `users/${uid}/roles`);
-        
+
         // Crear objeto con los roles
         const rolesData = {
+            email: user.email,
             admin: user.roles.includes(Role.ADMIN)
         };
-    
         await set(rolesRef, rolesData);
-        
         return user.roles;
     }
 
+    async GetAllUsers(): Promise<any[]> {
+        const db = getDatabase(app);
+        const usersRef = ref(db, 'users');
+        const snapshot = await get(usersRef);
+
+        if (snapshot.exists()) {
+            const data = snapshot.val();
+            const formattedData = data ? 
+            Object.entries(data).map(([id, value]) => ({id, ...(value as any)}) )
+            : [];
+            return formattedData;
+        } 
+        return []
+    }
 }

@@ -6,14 +6,14 @@ export const Login: React.FC = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string>('');
+    
     const navigate = useNavigate();
-    const handleLogin = async (e:
-        React.FormEvent<HTMLFormElement>) => {
+    
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError('');
         try {
-            const userCredential
-                = await authService.signIn(email, password);
+            const userCredential = await authService.signIn(email, password);
             console.log("Usuario autenticado:", userCredential.user);
             navigate('/dashboard');
         } catch (error: any) {
