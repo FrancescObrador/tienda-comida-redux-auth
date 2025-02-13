@@ -12,7 +12,7 @@ import { Admin } from "./pages/Admin";
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter basename="tienda-comida-redux-auth">
+      <BrowserRouter basename="/tienda-comida-redux-auth">
         <div className="container">
         <Navbar />
           <Routes>
